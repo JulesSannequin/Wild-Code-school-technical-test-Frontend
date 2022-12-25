@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.argo-parent {
+  height: 50vh;
+  background: linear-gradient(to right, #3C8CE7,#00EAFF);
+  overflow: scroll;
+}
+
+
+.argonautes {
+  background: linear-gradient(to right, #3C8CE7,#00EAFF);
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  background: -webkit-linear-gradient(#8EC5FC, #E0C3FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main-bottom {
+  background-color: yellowgreen;
+  height: 50vh;
+  background-image: radial-gradient( circle farthest-corner at 11.7% 80.6%,  rgba(249,185,255,1) 0%, rgba(177,172,255,1) 49.3%, rgba(98,203,255,1) 89% );;
+}
+
+.main-bottom form {
+  display: flex;
+  height: 48vh;
+  flex-direction: column;
+  align-items: center;
+ justify-content: center;
+}
+
+.main-bottom button {
+  margin-top: 2vh;
+}
+
+

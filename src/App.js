@@ -18,7 +18,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addArgonaute),
     }).then(() => {
-      console.log("Ton Argonaute est bien pris a bord");
+      console.log("Ton Argonaute est bien pris a bord ");
     });
   };
 
@@ -39,23 +39,35 @@ function App() {
     <p>Loading...</p>
   ) : (
     <div>
-      {data.map((response, index) => {
-        return (
-          <div className="argonautes" key={index}>
-            <p>{response.name}</p>
-          </div>
-        );
-      })}
-      <form onSubmit={handleSubmit}>
-        {/* <label htmlFor="name"></label> */}
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
-        <button type="submit">Ajouter un Argonaute</button>
-      </form>
+      <div className="argo-parent">
+        <div className="title">
+          <h1>Mon super équipage</h1>
+        </div>
+
+        {data.map((response, index) => {
+          return (
+            <div className="argonautes">
+              <div key={index}>
+                <p>{response.name}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="main-bottom">
+        <form onSubmit={handleSubmit}>
+          {/* <label htmlFor="name"></label> */}
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+          <button className="button" type="submit">
+            Ajouter un Argonaute
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
