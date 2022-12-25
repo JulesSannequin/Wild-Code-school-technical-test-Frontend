@@ -1,20 +1,27 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// const config = {
-//   headers: {
-//     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
-//     "Access-Control-Allow-Origin": "https://localhost:3001/",
-//     "Content-Type": "application/json",
-//   },
-// };
 
 function App() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [isLoading, setisLoading] = useState(true);
+  const [name, setName] = useState("");
 
-  try {
-  } catch (error) {}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const addArgonaute = { name };
+    console.log(addArgonaute);
+
+    fetch("http://localhost:3000/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addArgonaute),
+    }).then(() => {
+      console.log("Ton Argonaute est bien pris a bord");
+    });
+  };
+
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -28,25 +35,29 @@ function App() {
       console.log(error.response);
     }
   }, []);
-  return (
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
     <div>
-      <h1>Hello World</h1>
+      {data.map((response, index) => {
+        return (
+          <div className="argonautes" key={index}>
+            <p>{response.name}</p>
+          </div>
+        );
+      })}
+      <form onSubmit={handleSubmit}>
+        {/* <label htmlFor="name"></label> */}
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+        <button type="submit">Ajouter un Argonaute</button>
+      </form>
     </div>
   );
 }
-
-// function App() {
-//   useEffect(() => {
-//     axios.get("http://localhost:3000/", config).then((response) => {
-//       console.log(response.data);
-//     });
-//   }, []);
-
-//   return (
-//     <div className="App">
-//       <h2>Hello world</h2>
-//     </div>
-//   );
-// }
 
 export default App;
