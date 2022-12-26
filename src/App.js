@@ -59,12 +59,14 @@ function App() {
           {/* <label htmlFor="name"></label> */}
           <input
             type="text"
+            placeholder="Écrit le nom de ton Argonaute"
             id="name"
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
           <button className="button" type="submit">
-            Ajouter un Argonaute
+            <span className="text">Ajouter un Argonaute</span>{" "}
+            <span className="icon">OK</span>
           </button>
         </form>
       </div>
